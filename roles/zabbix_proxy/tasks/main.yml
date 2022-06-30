@@ -44,24 +44,6 @@
     mode: '0755'
   become: true
 
-- name: "Allow zabbix-proxy to open connections (SELinux)"
-  ansible.posix.seboolean:
-    name: zabbix_can_network
-    persistent: true
-    state: true
-  become: true
-  when: ansible_selinux.status == "enabled"
-  tags: selinux
-
-- name: "Allow zabbix-proxy to connect to zabbix_proxy_preprocessing.sock (SELinux)"
-  ansible.posix.seboolean:
-    name: daemons_enable_cluster_mode
-    persistent: true
-    state: true
-  become: true
-  when: ansible_selinux.status == "enabled"
-  tags: selinux
-
 - name: "Configure zabbix-proxy"
   template:
     src: zabbix_proxy.conf.j2
@@ -99,11 +81,6 @@
     proxy_name: "{{ zabbix_proxy_name }}"
     description: "{{ zabbix_proxy_description | default(omit) }}"
     interface: "{{ zabbix_proxy_interface }}"
-    tls_psk: "{{ zabbix_proxy_tlspsk_secret | default(omit) }}"
-    tls_psk_identity: "{{ zabbix_proxy_tlspskidentity | default(omit) }}"
-    tls_subject: "{{ zabbix_proxy_tls_subject | default(omit) }}"
-    tls_accept: "{{ zabbix_proxy_tls_config[zabbix_proxy_tlsaccept if zabbix_proxy_tlsaccept else 'no_encryption'] }}"
-    tls_connect: "{{ zabbix_proxy_tls_config[zabbix_proxy_tlsconnect if zabbix_proxy_tlsconnect else 'no_encryption'] }}"
     validate_certs: "{{ zabbix_api_validate_certs | default(omit) }}"
     timeout: "{{ zabbix_api_timeout }}"
   when:
