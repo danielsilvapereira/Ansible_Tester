@@ -1,5 +1,5 @@
 ---
-# defaults file for zabbix_proxy
+# Configurações iniciais
 
 zabbix_proxy_version: 6.0
 zabbix_proxy_version_minor: "*"
@@ -48,12 +48,6 @@ zabbix_server_port: 10051          # Will be deprecated in 2.0.0
 zabbix_proxy_serverport: "{{ zabbix_server_port }}"
 zabbix_database_creation: true
 zabbix_database_sqlload: true
-zabbix_proxy_dbtlsconnect:
-zabbix_proxy_dbtlscafile:
-zabbix_proxy_dbtlscertfile:
-zabbix_proxy_dbtlskeyfile:
-zabbix_proxy_dbtlscipher:
-zabbix_proxy_dbtlscipher13:
 zabbix_proxy_allowunsupporteddbversions: 0
 
 # Descomente qual banco de dador for utilizar

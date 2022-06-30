@@ -1,0 +1,7 @@
+---
+- name: Deploy do Zabbix Proxy
+  hosts: "{{ grupo }}"
+  become: true
+  
+  roles:
+    - zabbix_proxy
