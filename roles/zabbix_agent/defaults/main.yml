@@ -82,7 +82,7 @@ zabbix_agent_logremotecommands: 0
 zabbix_agent_listenport: 10050
 zabbix_agent_jmx_listenport:
 zabbix_agent_listeninterface:
-zabbix_agent_listenip:
+zabbix_agent_listenip: 0.0.0.0
 zabbix_agent_startagents: 3
 zabbix_agent_hostname: "{{ inventory_hostname }}"
 zabbix_agent_hostnameitem:
@@ -116,7 +116,7 @@ zabbix_agent_ipmi_password:
 zabbix_agent_ipmi_privilege: 2
 zabbix_agent_ipmi_username:
 
-# Zabbix Agent2
+# Variaveis para o arquivo de conf do Zabbix Agent2
 zabbix_agent2_pidfile: /var/run/zabbix/zabbix_agent2.pid
 zabbix_agent2_logfile: /var/log/zabbix/zabbix_agent2.log
 zabbix_agent2_logtype: file
@@ -126,7 +126,7 @@ zabbix_agent2_logfilesize: 100
 zabbix_agent2_debuglevel: 3
 zabbix_agent2_sourceip:
 zabbix_agent2_listenport: 10050
-zabbix_agent2_listenip:
+zabbix_agent2_listenip: 0.0.0.0
 zabbix_agent2_hostname: "{{ inventory_hostname }}"
 zabbix_agent2_hostnameitem:
 zabbix_agent2_hostmetadata:
