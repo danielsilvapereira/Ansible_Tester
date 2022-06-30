@@ -56,15 +56,15 @@ zabbix_proxy_dbtlscipher:
 zabbix_proxy_dbtlscipher13:
 zabbix_proxy_allowunsupporteddbversions: 0
 
-# Some role specific vars
-zabbix_proxy_database: mysql
-zabbix_proxy_database_long: mysql
+# Descomente qual banco de dador for utilizar
+# zabbix_proxy_database: mysql
+# zabbix_proxy_database_long: mysql
 # zabbix_proxy_database: pgsql
 # zabbix_proxy_database_long: postgresql
-# zabbix_proxy_database: sqlite3
-# zabbix_proxy_database_long: sqlite3
+zabbix_proxy_database: sqlite3
+zabbix_proxy_database_long: sqlite3
 
-# zabbix-proxy specific vars
+# Variaveis de configuração do proxy
 zabbix_proxy_mode: 0
 zabbix_proxy_hostname: "{{ inventory_hostname }}"
 zabbix_proxy_listenport: 10051
@@ -139,23 +139,6 @@ zabbix_proxy_vaulttoken:
 zabbix_proxy_vaulturl: https://127.0.0.1:8200
 zabbix_proxy_vaultdbpath:
 zabbix_proxy_listenbacklog:
-
-# TLS settings
-zabbix_proxy_tlsconnect:
-zabbix_proxy_tlsaccept:
-zabbix_proxy_tlscafile:
-zabbix_proxy_tlscrlfile:
-zabbix_proxy_tlsservercertissuer:
-zabbix_proxy_tlsservercertsubject:
-zabbix_proxy_tls_subject: "{{ zabbix_proxy_tlsservercertsubject }}"      # FIXME this is not correct and should be removed with 2.0.0, here only to prevent regression
-zabbix_proxy_tlscertfile:
-zabbix_proxy_tlskeyfile:
-zabbix_proxy_tlspskidentity:
-
-zabbix_proxy_tls_config:
-  no_encryption: 'no_encryption'
-  psk: 'PSK'
-  cert: 'certificate'
 
 # Zabbix API stuff
 zabbix_validate_certs: true                        # Will be deprecated in 2.0.0

@@ -1,6 +1,4 @@
 ---
-# tasks file for zabbix_proxy
-
 - name: "Replace Sangoma with RedHat task"
   set_fact:
     ansible_os_family: 'RedHat'
