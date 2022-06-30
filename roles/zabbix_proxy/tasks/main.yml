@@ -25,11 +25,6 @@
   when:
     - ansible_os_family == "RedHat"
 
-- name: "Install the correct repository"
-  include: "Debian.yml"
-  when:
-    - ansible_os_family == "Debian"
-
 - name: "Installing the database"
   include: "{{ zabbix_proxy_database_long }}.yml"
 
@@ -50,29 +45,6 @@
     state: directory
     mode: '0755'
   become: true
-
-- name: "Create directory for PSK file if not exist."
-  file:
-    path: "{{ zabbix_proxy_tlspskfile | dirname }}"
-    mode: 0755
-    state: directory
-  become: true
-  when:
-    - zabbix_proxy_tlspskfile is defined
-
-- name: "Place TLS PSK File"
-  copy:
-    dest: "{{ zabbix_proxy_tlspskfile }}"
-    content: "{{ zabbix_proxy_tlspsk_secret }}"
-    owner: zabbix
-    group: zabbix
-    mode: 0400
-  become: true
-  when:
-    - zabbix_proxy_tlspskfile is defined
-    - zabbix_proxy_tlspsk_secret is defined
-  notify:
-    - restart zabbix-proxy
 
 - name: "Allow zabbix-proxy to open connections (SELinux)"
   ansible.posix.seboolean:
