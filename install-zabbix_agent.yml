@@ -1,0 +1,7 @@
+---
+- name: Deploy do Zabbix Agent
+  hosts: "{{ grupo }}"
+  become: true
+  
+  roles:
+    - zabbix_agent
