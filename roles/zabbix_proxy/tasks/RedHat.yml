@@ -76,24 +76,6 @@
   tags:
     - zabbix-server
 
-- name: "RedHat | Create 'zabbix' group (EPEL)"
-  group:
-    name: "{{ zabbix_proxy_groupname | default('zabbix') }}"
-    gid: "{{ zabbix_proxy_groupid | default(omit) }}"
-    state: present
-  become: true
-  when:
-    - zabbix_repo == "epel"
-
-- name: "RedHat | Create 'zabbix' user (EPEL)"
-  user:
-    name: "{{ zabbix_proxy_username | default('zabbix') }}"
-    comment: Zabbix Monitoring System
-    uid: "{{ zabbix_proxy_userid | default(omit) }}"
-    group: zabbix
-  become: true
-  when:
-    - zabbix_repo == "epel"
 
 - name: "Make sure old file is absent"
   file:
